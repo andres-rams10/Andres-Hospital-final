@@ -1,0 +1,40 @@
+<h1>CENTRO MEDICO HOSPITALARIO</h1>
+<h2>LISTADO DE PACIENTES</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad </th>
+            <th>Telefono</th>           
+        </tr>
+    </thead>
+    <tbody>
+
+        {{#each pacientes}}
+        <tr>
+            <form action="/pacientes/actualizar/{{cedula}}" method="post">
+                <td><input id="Cedula" name="pacientes" value="{{cedula}}" disabled> </td>
+                <td><input id="Nombre" name="Nombre" value="{{nombre}}" {{../opcion}}>
+                </td>
+                <td><input id="Apellido" name="Apellido" value="{{apellido}}" {{../opcion}}>
+                <td><input id="Edad" name="edad" value="{{Edad}}" {{../opcion}}></td>
+                <td><input id="Telefono" name="telefono" value="{{telefono}}" {{../opcion}}></td>
+                <td>
+                {{#if ../estado}}
+                    <a class="eliminar" href="/pacientes/eliminar/{{cedula}}"><img src="/imagenes/eliminar.png"></a>
+                    <a class="editar" href="/pacientes/activar"><img src="/imagenes/editar.png"></a>
+                {{else}}
+                    <input type="submit" value="Enviar">
+                {{/if}}
+                </td>
+            </form>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<div class="opciones-tabla">
+<a class="volver" href="/">Volver</a>
+<a href="/pacientes/agregar-paciente"> Agregar los pacientes </a>
+</div>
